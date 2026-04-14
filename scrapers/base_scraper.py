@@ -59,10 +59,19 @@ class BaseScraper(ABC):
         """Generate SHA-256 hash of content for deduplication"""
         return hashlib.sha256(content.encode('utf-8')).hexdigest()
     
-    def _sanitize_filename(self, name: str) -> str:
-        """Sanitize string for use as filename"""
+    def _sanitize_filename(self, name: str, max_length: int = 100) -> str:
+        """Sanitize string for use as filename.
+
+        Caps at `max_length` chars (default 100) to stay under Windows'
+        260-char MAX_PATH. Worst-case prefix+dir in this repo is ~60 chars
+        (e.g. C:\\...\\output\\github\\AzurePowerShell-GH\\20260414_i9999_),
+        leaving ~100 chars of title + `.md` with comfortable headroom.
+        """
         sanitized = "".join(c if c.isalnum() or c in (' ', '-', '_') else '_' for c in name)
-        return sanitized.strip().replace(' ', '_')[:200]
+        # Collapse runs of underscores so truncation doesn't land mid-word-cluster
+        while '__' in sanitized:
+            sanitized = sanitized.replace('__', '_')
+        return sanitized.strip(' _').replace(' ', '_')[:max_length]
     
     def _create_frontmatter(self, metadata: Dict) -> str:
         """Create YAML frontmatter for markdown file"""
