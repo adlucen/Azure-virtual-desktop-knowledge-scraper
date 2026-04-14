@@ -49,8 +49,6 @@ source venv/bin/activate
 python main.py --mode once
 ```
 
-First scrape takes 2-4 hours and creates ~1,000-2,000 documents.
-
 ## Output Structure
 
 ```
@@ -107,28 +105,26 @@ python main.py --mode once --verbose
 
 ### What You'll See
 
-Real-time colored output showing progress:
+Console output showing progress:
 
 ```
-======================================================================
-Starting: Microsoft Learn Documentation
-======================================================================
-13:30:52 | INFO     |    Saved: output/microsoft_docs/AVD-General/...
-13:30:53 | INFO     |    Saved: output/microsoft_docs/AVD-Deployment/...
-----------------------------------------------------------------------
-✓ Completed: Microsoft Learn Documentation
-  Documents: 127
-  Duration: 1847.3s
-======================================================================
-
- SCRAPING SUMMARY
-======================================================================
-Total Runtime: 7234.5s (120.6 minutes)
-Documents Saved: 1,247
-Successful Requests: 1,398
-Failed Requests: 12
-Success Rate: 99.1%
-======================================================================
+17:08:13 | INFO     | Total articles scraped: 52
+17:08:13 | INFO     | ----------------------------------------------------------------------
+17:08:13 | INFO     |   Completed: Microsoft Learn Documentation
+17:08:13 | INFO     |   Documents: 52
+17:08:13 | INFO     |   Duration: 138.4s
+17:08:13 | INFO     | ======================================================================
+17:08:13 | INFO     |
+17:08:13 | INFO     | ======================================================================
+17:08:13 | INFO     |  Starting: Azure Updates RSS Feed
+17:08:13 | INFO     | ======================================================================
+17:08:13 | INFO     | Scraping Azure Updates RSS feed
+17:08:14 | INFO     | Azure updates scraped: 0
+17:08:14 | INFO     | ----------------------------------------------------------------------
+17:08:14 | INFO     |   Completed: Azure Updates RSS Feed
+17:08:14 | INFO     |   Documents: 0
+17:08:14 | INFO     |   Duration: 0.7s
+17:08:14 | INFO     | ======================================================================
 ```
 
 ### Logs
@@ -263,11 +259,7 @@ reddit:
 
 ##  Contributing
 
-Contributions welcome! Ideas:
-- Additional scrapers (Stack Overflow, GitHub, Tech Community)
-- Parallel scraping for performance
-- Image OCR for architecture diagrams
-- Enhanced categorization logic
+Contributions are welcomed and appreciated.
 
 ##  License
 
@@ -275,16 +267,10 @@ MIT License - See LICENSE file
 
 ##  Disclaimer
 
-For personal/educational use only. Users must:
-- Respect source website terms of service
-- Honor robots.txt
-- Not redistribute scraped content
+For personal/educational use only. In robots we trust.
 
 ##  Acknowledgments
 
-Built for AVD administrators by AVD administrators. Thanks to:
-- Microsoft Learn documentation team
-- Expert bloggers: Christiaan Brinkhoff, Tom Hickling, Marcel Meurer, Nerdio
-- Open source: BeautifulSoup, requests, feedparser
+Built for AVD administrators by an AVD administrator.
 
 ---
