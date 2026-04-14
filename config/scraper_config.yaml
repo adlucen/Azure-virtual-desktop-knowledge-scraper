@@ -68,6 +68,65 @@ scraping_targets:
     limit_per_sub: 50
     output_dir: "output/reddit"
 
+  # Stack Overflow Q&A via Stack Exchange API
+  stack_overflow:
+    enabled: true
+    update_frequency: "weekly"
+    tags:
+      - "azure-virtual-desktop"
+      - "fslogix"
+      - "microsoft-intune"
+      - "azure-rm"
+      - "azure-active-directory"
+      - "microsoft-graph-api"
+      - "azure-ad-b2c"
+      - "powershell"
+    min_score: 3
+    questions_per_tag: 50
+    include_answers: 3
+    api_key: ""   # optional — register at https://stackapps.com/apps/oauth/register
+    output_dir: "output/stackoverflow"
+
+  # GitHub issues in Azure / AVD / FSLogix / Intune repos
+  github:
+    enabled: true
+    update_frequency: "weekly"
+    repos:
+      - "MicrosoftDocs/azure-docs"
+      - "Azure/RDS-Templates"
+      - "MicrosoftDocs/fslogix-docs"
+      - "Azure/azure-powershell"
+      - "microsoft/Intune-PowerShell-SDK"
+      - "MicrosoftDocs/memdocs"
+    labels_filter: []   # empty = all issues; add label names to filter
+    state: "closed"     # closed issues are resolved = higher signal
+    min_comments: 2
+    issues_per_repo: 100
+    max_comments_per_issue: 20
+    api_key: ""         # optional — uses GITHUB_TOKEN env var if blank
+    output_dir: "output/github"
+
+  # Microsoft Tech Community blogs & Q&A boards
+  tech_community:
+    enabled: true
+    update_frequency: "daily"
+    boards:
+      - name: "Azure Virtual Desktop Blog"
+        rss: "https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bg-p/AzurevirtualDesktopBlog/rss"
+        type: "blog"
+      - name: "FSLogix"
+        rss: "https://techcommunity.microsoft.com/t5/fslogix/ct-p/FSLogix/rss"
+        type: "blog"
+      - name: "Intune Customer Success"
+        rss: "https://techcommunity.microsoft.com/t5/intune-customer-success/bg-p/IntuneCustomerSuccess/rss"
+        type: "blog"
+      - name: "Windows 365"
+        rss: "https://techcommunity.microsoft.com/t5/windows-365/bg-p/Windows365Blog/rss"
+        type: "blog"
+    max_posts_per_board: 50
+    fetch_replies: true
+    output_dir: "output/tech_community"
+
 # Output formatting
 output:
   format: "markdown"

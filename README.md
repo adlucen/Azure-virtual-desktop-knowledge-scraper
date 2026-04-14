@@ -20,7 +20,7 @@ Perfect for powering AI assistants, RAG systems, or searchable knowledge bases.
 
 ## Features
 
-- **Multi-Source Scraping**: Microsoft Learn, Azure Updates, expert blogs (Christiaan Brinkhoff, Tom Hickling, Marcel Meurer, Nerdio)
+- **Multi-Source Scraping**: Microsoft Learn, Azure Updates, expert blogs (Christiaan Brinkhoff, Tom Hickling, Marcel Meurer, Nerdio), Stack Overflow Q&A, GitHub issues, Microsoft Tech Community
 - **Clean Markdown Output**: HTML-to-Markdown with YAML frontmatter containing rich metadata
 - **Auto-Categorization**: AVD-General, Deployment, Troubleshooting, FSLogix, Security, etc.
 - **Real-Time Progress**: Console output showing exactly what's happening
@@ -60,10 +60,22 @@ output/
 │   ├── FSLogix/
 │   └── Intune/
 ├── azure_updates/
-└── blogs/
-    ├── Christiaan_Brinkhoff/
-    ├── Tom_Hickling/
-    └── Nerdio/
+├── blogs/
+│   ├── Christiaan_Brinkhoff/
+│   ├── Tom_Hickling/
+│   └── Nerdio/
+├── stackoverflow/
+│   ├── AVD-SO/
+│   ├── FSLogix-SO/
+│   └── Intune-SO/
+├── github/
+│   ├── AVD-GH/
+│   ├── FSLogix-GH/
+│   └── AzurePowerShell-GH/
+└── tech_community/
+    ├── AVD-TC/
+    ├── FSLogix-TC/
+    └── Intune-TC/
 ```
 
 ### Example Output
@@ -95,9 +107,12 @@ Azure Virtual Desktop is a comprehensive desktop and app virtualization service.
 python main.py --mode once
 
 # Run specific scraper
-python main.py --mode microsoft   # Microsoft docs only
-python main.py --mode updates     # Azure updates only
-python main.py --mode blogs       # Expert blogs only
+python main.py --mode microsoft       # Microsoft docs only
+python main.py --mode updates         # Azure updates only
+python main.py --mode blogs           # Expert blogs only
+python main.py --mode stackoverflow   # Stack Overflow Q&A only
+python main.py --mode github          # GitHub issues only
+python main.py --mode techcommunity   # Microsoft Tech Community only
 
 # Verbose logging (see debug details)
 python main.py --mode once --verbose
@@ -218,7 +233,10 @@ avd-knowledge-scraper/
 │   ├── base_scraper.py          # Base class
 │   ├── logger.py                # Logging & progress tracking
 │   ├── microsoft_learn_scraper.py
-│   └── rss_scraper.py
+│   ├── rss_scraper.py
+│   ├── stackoverflow_scraper.py # Stack Overflow Q&A (Stack Exchange API)
+│   ├── github_scraper.py        # GitHub issues (Azure/AVD/FSLogix repos)
+│   └── techcommunity_scraper.py # Microsoft Tech Community blogs
 ├── output/                      # Scraped content (git-ignored)
 ├── logs/                        # Log files (git-ignored)
 ├── main.py                      # Main orchestrator

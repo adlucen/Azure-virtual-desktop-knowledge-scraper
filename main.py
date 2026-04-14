@@ -13,6 +13,9 @@ sys.path.insert(0, str(Path(__file__).parent / 'scrapers'))
 from scrapers.logger import setup_logging, ProgressTracker
 from scrapers.microsoft_learn_scraper import MicrosoftLearnScraper
 from scrapers.rss_scraper import RSSFeedScraper
+from scrapers.stackoverflow_scraper import StackOverflowScraper
+from scrapers.github_scraper import GitHubScraper
+from scrapers.techcommunity_scraper import TechCommunityScraper
 
 
 class ScraperOrchestrator:
@@ -25,7 +28,10 @@ class ScraperOrchestrator:
         
         self.scrapers = {
             'microsoft_learn': MicrosoftLearnScraper(),
-            'rss': RSSFeedScraper()
+            'rss': RSSFeedScraper(),
+            'stackoverflow': StackOverflowScraper(),
+            'github': GitHubScraper(),
+            'tech_community': TechCommunityScraper(),
         }
     
     def run_microsoft_docs(self):
@@ -57,17 +63,50 @@ class ScraperOrchestrator:
         except Exception as e:
             self.progress.log_error(f"Expert blogs scraper failed: {e}")
             self.logger.exception("Exception during blog scraping")
-    
+
+    def run_stack_overflow(self):
+        """Run Stack Overflow Q&A scraper"""
+        self.progress.start_source("Stack Overflow Q&A")
+        try:
+            qa = self.scrapers['stackoverflow'].scrape()
+            self.progress.end_source(len(qa))
+        except Exception as e:
+            self.progress.log_error(f"Stack Overflow scraper failed: {e}")
+            self.logger.exception("Exception during Stack Overflow scraping")
+
+    def run_github(self):
+        """Run GitHub issues scraper"""
+        self.progress.start_source("GitHub Issues")
+        try:
+            issues = self.scrapers['github'].scrape()
+            self.progress.end_source(len(issues))
+        except Exception as e:
+            self.progress.log_error(f"GitHub scraper failed: {e}")
+            self.logger.exception("Exception during GitHub scraping")
+
+    def run_tech_community(self):
+        """Run Microsoft Tech Community scraper"""
+        self.progress.start_source("Microsoft Tech Community")
+        try:
+            posts = self.scrapers['tech_community'].scrape()
+            self.progress.end_source(len(posts))
+        except Exception as e:
+            self.progress.log_error(f"Tech Community scraper failed: {e}")
+            self.logger.exception("Exception during Tech Community scraping")
+
     def run_all(self):
         """Run all scrapers once"""
         self.logger.info("\n" + "#"*70)
         self.logger.info("RUNNING ALL SCRAPERS")
         self.logger.info("#"*70)
-        
+
         self.run_microsoft_docs()
         self.run_azure_updates()
         self.run_blogs()
-        
+        self.run_stack_overflow()
+        self.run_github()
+        self.run_tech_community()
+
         self.progress.print_summary()
 
 
@@ -81,12 +120,19 @@ Examples:
   python main.py --mode microsoft         # Run Microsoft docs only
   python main.py --mode updates           # Run Azure updates only
   python main.py --mode blogs             # Run blogs only
+  python main.py --mode stackoverflow     # Run Stack Overflow Q&A only
+  python main.py --mode github            # Run GitHub issues only
+  python main.py --mode techcommunity     # Run Tech Community only
   python main.py --mode once --verbose    # Run with debug logging
         """
     )
     parser.add_argument(
         '--mode',
-        choices=['once', 'microsoft', 'updates', 'blogs', 'test'],
+        choices=[
+            'once', 'microsoft', 'updates', 'blogs',
+            'stackoverflow', 'github', 'techcommunity',
+            'test',
+        ],
         default='once',
         help='Run mode (default: once)'
     )
@@ -117,6 +163,15 @@ Examples:
             orchestrator.progress.print_summary()
         elif args.mode == 'blogs':
             orchestrator.run_blogs()
+            orchestrator.progress.print_summary()
+        elif args.mode == 'stackoverflow':
+            orchestrator.run_stack_overflow()
+            orchestrator.progress.print_summary()
+        elif args.mode == 'github':
+            orchestrator.run_github()
+            orchestrator.progress.print_summary()
+        elif args.mode == 'techcommunity':
+            orchestrator.run_tech_community()
             orchestrator.progress.print_summary()
     except KeyboardInterrupt:
         orchestrator.logger.info("\n\nScraping interrupted by user")
