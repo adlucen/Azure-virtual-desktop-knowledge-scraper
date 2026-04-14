@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Scraped output (user-generated)
+output/*
+!output/.gitkeep
+*.jsonl
+*.parquet
+*.csv
+chroma_db/
+
+# Logs
+logs/*
+!logs/.gitkeep
+*.log
+
+# API credentials
+.env
+credentials.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary
+*.tmp
+temp/

@@ -1,0 +1,102 @@
+---
+# AVD Knowledge Scraper Configuration
+
+scraping_targets:
+  
+  # Microsoft Official Documentation
+  microsoft_learn:
+    enabled: true
+    update_frequency: "weekly"
+    base_urls:
+      - "https://learn.microsoft.com/en-us/azure/virtual-desktop/"
+      - "https://learn.microsoft.com/en-us/fslogix/"
+      - "https://learn.microsoft.com/en-us/windows-365/"
+      - "https://learn.microsoft.com/en-us/mem/intune/"
+    depth: 3
+    output_dir: "output/microsoft_docs"
+    
+  # Azure Updates & What's New
+  azure_updates:
+    enabled: true
+    update_frequency: "daily"
+    rss_feeds:
+      - "https://azure.microsoft.com/en-us/updates/feed/"
+    keywords:
+      - "virtual desktop"
+      - "AVD"
+      - "WVD"
+      - "FSLogix"
+      - "MSIX"
+      - "Intune"
+      - "Entra"
+    output_dir: "output/azure_updates"
+    
+  # Expert Blogs
+  expert_blogs:
+    enabled: true
+    update_frequency: "weekly"
+    blogs:
+      - name: "Christiaan Brinkhoff"
+        url: "https://christiaanbrinkhoff.com"
+        rss: "https://christiaanbrinkhoff.com/feed/"
+      - name: "Tom Hickling"
+        url: "https://xenithit.blogspot.com"
+        rss: "https://xenithit.blogspot.com/feeds/posts/default"
+      - name: "Marcel Meurer"
+        url: "https://marcelmeurer.com"
+        rss: "https://marcelmeurer.com/feed/"
+      - name: "Nerdio"
+        url: "https://getnerdio.com/blog/"
+        rss: "https://getnerdio.com/feed/"
+    output_dir: "output/blogs"
+    
+  # Reddit Communities
+  reddit:
+    enabled: true
+    update_frequency: "daily"
+    subreddits:
+      - "AZURE"
+      - "sysadmin"
+      - "Intune"
+    keywords:
+      - "AVD"
+      - "Azure Virtual Desktop"
+      - "FSLogix"
+      - "MSIX app attach"
+      - "session host"
+      - "host pool"
+    limit_per_sub: 50
+    output_dir: "output/reddit"
+
+# Output formatting
+output:
+  format: "markdown"
+  frontmatter_format: "yaml"
+  include_metadata:
+    - source
+    - url
+    - timestamp
+    - category
+    - tags
+    - author
+
+# Deduplication
+deduplication:
+  enabled: true
+  method: "content_hash"
+  similarity_threshold: 0.85
+
+# Rate limiting
+rate_limiting:
+  requests_per_minute: 30
+  respect_robots_txt: true
+  user_agent: "AVD-Knowledge-Bot/1.0 (Educational Purpose)"
+
+# Content processing
+content_processing:
+  remove_navigation: true
+  remove_ads: true
+  extract_code_blocks: true
+  preserve_images: true
+  image_download: false
+  max_content_length: 50000
