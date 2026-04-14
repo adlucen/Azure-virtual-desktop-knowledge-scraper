@@ -102,4 +102,4 @@ class NewSourceScraper(BaseScraper):
 
 ## Questions?
 
-Open a discussion or issue - we're happy to help!
+Open a discussion or issue - I'll try to help!
