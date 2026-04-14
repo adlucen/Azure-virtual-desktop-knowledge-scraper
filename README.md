@@ -23,7 +23,7 @@ Perfect for powering AI assistants, RAG systems, or searchable knowledge bases.
 - **Multi-Source Scraping**: Microsoft Learn, Azure Updates, expert blogs (Christiaan Brinkhoff, Tom Hickling, Marcel Meurer, Nerdio)
 - **Clean Markdown Output**: HTML-to-Markdown with YAML frontmatter containing rich metadata
 - **Auto-Categorization**: AVD-General, Deployment, Troubleshooting, FSLogix, Security, etc.
-- **Real-Time Progress**: Colored console output showing exactly what's happening
+- **Real-Time Progress**: Console output showing exactly what's happening
 - **Deduplication**: SHA-256 hashing prevents duplicate content
 - **LLM-Ready**: Use directly with any LLM or convert to instruction tuning/RAG formats
 
