@@ -8,9 +8,9 @@ A comprehensive web scraping pipeline that aggregates Azure Virtual Desktop docu
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-## 🎯 Purpose
+##  Purpose
 
-Built for IT professionals managing AVD deployments who need instant access to:
+Built for IT guys managing AVD deployments who need instant access to:
 - Official Microsoft documentation and updates
 - Expert blog posts and best practices
 - Community troubleshooting discussions
@@ -18,7 +18,7 @@ Built for IT professionals managing AVD deployments who need instant access to:
 
 Perfect for powering AI assistants, RAG systems, or searchable knowledge bases.
 
-## ✨ Features
+## Features
 
 - **Multi-Source Scraping**: Microsoft Learn, Azure Updates, expert blogs (Christiaan Brinkhoff, Tom Hickling, Marcel Meurer, Nerdio)
 - **Clean Markdown Output**: HTML-to-Markdown with YAML frontmatter containing rich metadata
@@ -27,7 +27,7 @@ Perfect for powering AI assistants, RAG systems, or searchable knowledge bases.
 - **Deduplication**: SHA-256 hashing prevents duplicate content
 - **LLM-Ready**: Use directly with any LLM or convert to instruction tuning/RAG formats
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.9+
@@ -51,7 +51,7 @@ python main.py --mode once
 
 First scrape takes 2-4 hours and creates ~1,000-2,000 documents.
 
-## 📁 Output Structure
+## Output Structure
 
 ```
 output/
@@ -88,7 +88,7 @@ tags:
 Azure Virtual Desktop is a comprehensive desktop and app virtualization service...
 ```
 
-## 💡 Usage
+##  Usage
 
 ### Basic Commands
 
@@ -111,17 +111,17 @@ Real-time colored output showing progress:
 
 ```
 ======================================================================
-📥 Starting: Microsoft Learn Documentation
+Starting: Microsoft Learn Documentation
 ======================================================================
-13:30:52 | INFO     |   💾 Saved: output/microsoft_docs/AVD-General/...
-13:30:53 | INFO     |   💾 Saved: output/microsoft_docs/AVD-Deployment/...
+13:30:52 | INFO     |    Saved: output/microsoft_docs/AVD-General/...
+13:30:53 | INFO     |    Saved: output/microsoft_docs/AVD-Deployment/...
 ----------------------------------------------------------------------
 ✓ Completed: Microsoft Learn Documentation
   Documents: 127
   Duration: 1847.3s
 ======================================================================
 
-📊 SCRAPING SUMMARY
+ SCRAPING SUMMARY
 ======================================================================
 Total Runtime: 7234.5s (120.6 minutes)
 Documents Saved: 1,247
@@ -156,7 +156,7 @@ rate_limiting:
   requests_per_minute: 30
 ```
 
-## 🤖 LLM Integration
+##  LLM Integration
 
 ### Direct Use (Simplest)
 
@@ -232,7 +232,7 @@ avd-knowledge-scraper/
 └── README.md
 ```
 
-## 🔐 Optional: Reddit Scraping
+##  Optional: Reddit Scraping
 
 For Reddit discussions, get free API credentials:
 
@@ -261,7 +261,7 @@ reddit:
     - "sysadmin"
 ```
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions welcome! Ideas:
 - Additional scrapers (Stack Overflow, GitHub, Tech Community)
@@ -269,18 +269,18 @@ Contributions welcome! Ideas:
 - Image OCR for architecture diagrams
 - Enhanced categorization logic
 
-## 📝 License
+##  License
 
 MIT License - See LICENSE file
 
-## ⚠️ Disclaimer
+##  Disclaimer
 
 For personal/educational use only. Users must:
 - Respect source website terms of service
 - Honor robots.txt
 - Not redistribute scraped content
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 Built for AVD administrators by AVD administrators. Thanks to:
 - Microsoft Learn documentation team
@@ -288,5 +288,3 @@ Built for AVD administrators by AVD administrators. Thanks to:
 - Open source: BeautifulSoup, requests, feedparser
 
 ---
-
-**Built with ❤️ for the AVD community**
