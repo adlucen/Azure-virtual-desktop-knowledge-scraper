@@ -206,13 +206,13 @@ results = vectorstore.similarity_search(
 )
 ```
 
-## 📊 Expected Results
+##  Expected Results
 
 - **Initial scrape**: ~1,000-2,000 documents (5-10GB)
 - **Monthly growth**: ~200-500 new documents
 - **After 6 months**: ~4,000-6,000 documents (15-25GB)
 
-## 🛠️ Project Structure
+##  Project Structure
 
 ```
 avd-knowledge-scraper/
