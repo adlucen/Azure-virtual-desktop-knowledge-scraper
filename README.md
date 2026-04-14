@@ -135,7 +135,7 @@ Success Rate: 99.1%
 
 All activity is logged to `logs/scraper_TIMESTAMP.log` for troubleshooting.
 
-## 🔧 Configuration
+## Configuration
 
 Edit `config/scraper_config.yaml`:
 
