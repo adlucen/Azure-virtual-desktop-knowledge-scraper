@@ -11,7 +11,7 @@ scraping_targets:
       - "https://learn.microsoft.com/en-us/azure/virtual-desktop/"
       - "https://learn.microsoft.com/en-us/fslogix/"
       - "https://learn.microsoft.com/en-us/windows-365/"
-      - "https://learn.microsoft.com/en-us/mem/intune/"
+      - "https://learn.microsoft.com/en-us/intune/intune-service/"
     depth: 3
     output_dir: "output/microsoft_docs"
     
@@ -20,7 +20,7 @@ scraping_targets:
     enabled: true
     update_frequency: "daily"
     rss_feeds:
-      - "https://azure.microsoft.com/en-us/updates/feed/"
+      - "https://www.microsoft.com/releasecommunications/api/v2/azure/rss"
     keywords:
       - "virtual desktop"
       - "AVD"
@@ -42,12 +42,6 @@ scraping_targets:
       - name: "Tom Hickling"
         url: "https://xenithit.blogspot.com"
         rss: "https://xenithit.blogspot.com/feeds/posts/default"
-      - name: "Marcel Meurer"
-        url: "https://marcelmeurer.com"
-        rss: "https://marcelmeurer.com/feed/"
-      - name: "Nerdio"
-        url: "https://getnerdio.com/blog/"
-        rss: "https://getnerdio.com/feed/"
     output_dir: "output/blogs"
     
   # Reddit Communities
@@ -76,12 +70,8 @@ scraping_targets:
       - "azure-virtual-desktop"
       - "fslogix"
       - "microsoft-intune"
-      - "azure-rm"
       - "azure-active-directory"
-      - "microsoft-graph-api"
-      - "azure-ad-b2c"
-      - "powershell"
-    min_score: 3
+    min_score: 1
     questions_per_tag: 50
     include_answers: 3
     api_key: ""   # optional — register at https://stackapps.com/apps/oauth/register
@@ -112,16 +102,16 @@ scraping_targets:
     update_frequency: "daily"
     boards:
       - name: "Azure Virtual Desktop Blog"
-        rss: "https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bg-p/AzurevirtualDesktopBlog/rss"
+        rss: "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=AzurevirtualDesktopBlog"
         type: "blog"
       - name: "FSLogix"
-        rss: "https://techcommunity.microsoft.com/t5/fslogix/ct-p/FSLogix/rss"
+        rss: "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=FSLogix"
         type: "blog"
       - name: "Intune Customer Success"
-        rss: "https://techcommunity.microsoft.com/t5/intune-customer-success/bg-p/IntuneCustomerSuccess/rss"
+        rss: "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=IntuneCustomerSuccess"
         type: "blog"
       - name: "Windows 365"
-        rss: "https://techcommunity.microsoft.com/t5/windows-365/bg-p/Windows365Blog/rss"
+        rss: "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=Windows365Blog"
         type: "blog"
     max_posts_per_board: 50
     fetch_replies: true

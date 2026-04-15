@@ -125,6 +125,15 @@ class GitHubScraper(BaseScraper):
                 break
             page += 1
 
+            # GitHub caps the issues endpoint at 1000 results (10 pages at per_page=100).
+            # Requesting page 11+ returns 422. Stop before that.
+            if page > 10:
+                self.logger.info(
+                    f"Reached GitHub pagination cap (10 pages) for {repo}; "
+                    f"collected {len(issues)} so far."
+                )
+                break
+
         return issues
 
     def _build_issue_record(self, repo: str, issue: Dict) -> Dict:

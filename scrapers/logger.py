@@ -130,6 +130,10 @@ class ProgressTracker:
         """End tracking current source"""
         if self.source_start:
             duration = (datetime.now() - self.source_start).total_seconds()
+            # Scrapers call BaseScraper._save_markdown() directly rather than
+            # log_save(), so accumulate the source's count here to keep the
+            # final summary accurate.
+            self.stats['documents_saved'] += doc_count
             self.logger.info("-"*70)
             self.logger.info(f"✓ Completed: {self.current_source}")
             self.logger.info(f"  Documents: {doc_count}")
